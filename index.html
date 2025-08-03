@@ -41,11 +41,22 @@
             margin: 20px auto 30px;
             opacity: 0.9;
         }
-        .store-badges img {
-            height: 50px;
-            margin: 0 10px;
-            transition: transform 0.2s;
-        }
+        .store-badges a {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 10px;
+}
+.store-badges img {
+    height: 50px; /* Base height for Google Play */
+    transition: transform 0.2s;
+}
+/* Specific adjustment for the larger Apple SVG */
+.store-badges img[src$=".svg"] {
+    height: 38px; 
+}
+.store-badges img:hover {
+    transform: scale(1.05);
+}
         .store-badges img:hover {
             transform: scale(1.05);
         }
