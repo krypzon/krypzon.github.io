@@ -1,0 +1,166 @@
+:root {
+  --bg: #000000;
+  --card: #111111;
+  --muted: #aaaaaa;
+  --brand: #ffffff;
+  --accent: #ffffff;
+  --glass: rgba(255, 255, 255, 0.1);
+  --max-width: 1100px;
+  --radius: 12px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--brand);
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 36px auto;
+  padding: 24px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+  display: block;
+  background: #000;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--brand);
+}
+
+.tagline {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+nav a {
+  margin-left: 16px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--brand);
+}
+
+/* Hero layout: text left + video right */
+.hero {
+  margin: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  color: var(--brand);
+}
+
+.lead {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.cta {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  background: var(--brand);
+  color: var(--bg);
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.hero-video {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-video video {
+  max-width: 180px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+section h2 {
+  margin-top: 36px;
+  font-size: 22px;
+  border-bottom: 1px solid var(--glass);
+  padding-bottom: 6px;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--glass);
+  color: var(--muted);
+}
+
+ol {
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 56px;
+  padding: 18px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
