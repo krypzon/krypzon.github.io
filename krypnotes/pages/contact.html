@@ -1,28 +1,91 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Krypnotes Support</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; margin: 0; background-color: #f4f7f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .container { background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 500px; width: 90%; }
-        h1 { color: #042B66; text-align: center; }
-        label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #333; }
-        input, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 1rem; font-size: 1rem; }
-        textarea { resize: vertical; min-height: 120px; }
-        button { display: block; width: 100%; padding: 0.75rem; border: none; border-radius: 4px; background-color: #042B66; color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background-color 0.2s; }
-        button:hover { background-color: #032352; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            background-color: #f4f7f9; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+        }
+        .container { 
+            background-color: #fff; 
+            padding: 2rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            max-width: 500px; 
+            width: 90%; 
+            text-align: center;
+        }
+        h1 { 
+            color: #042B66; 
+            margin-bottom: 1rem; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: bold; 
+            color: #333; 
+            text-align: left;
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 0.75rem; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+            margin-bottom: 1rem; 
+            font-size: 1rem; 
+        }
+        textarea { 
+            resize: vertical; 
+            min-height: 120px; 
+        }
+        button { 
+            display: block; 
+            width: 100%; 
+            padding: 0.75rem; 
+            border: none; 
+            border-radius: 4px; 
+            background-color: #042B66; 
+            color: white; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background-color 0.2s; 
+        }
+        button:hover { 
+            background-color: #032352; 
+        }
+        .thankyou {
+            display: none;
+        }
+        .thankyou h2 {
+            color: #042B66;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Contact Us</h1>
-        <!--
-            LATER, you will sign up for Formspree and replace the '#' 
-            with your real Formspree endpoint URL. You will also remove the onsubmit attribute.
-        -->
-        <form action="#" onsubmit="alert('Form submission is not yet active. Please try again later.'); return false;" method="POST">
+
+        <!-- Contact Form -->
+        <form id="contact-form" action="https://formsubmit.co/krypnotesteam@gmail.com" method="POST">
+            <!-- spam protection (honeypot) -->
+            <input type="text" name="_honey" style="display:none">
+            <!-- disable captcha -->
+            <input type="hidden" name="_captcha" value="false">
+            <!-- prevent redirect -->
+            <input type="hidden" name="_next" value="">
+
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -34,6 +97,33 @@
 
             <button type="submit">Send Message</button>
         </form>
+
+        <!-- Thank You Message -->
+        <div id="thankyou-message" class="thankyou">
+            <h2>Thank you!</h2>
+            <p>Your message has been sent successfully. We’ll get back to you shortly.</p>
+        </div>
     </div>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const thankyou = document.getElementById('thankyou-message');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+                form.style.display = 'none';
+                thankyou.style.display = 'block';
+            } else {
+                alert('Oops! Something went wrong. Please try again.');
+            }
+        });
+    </script>
 </body>
 </html>
